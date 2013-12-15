@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
+gem 'devise'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'simple_form'
+
+gem 'rails_admin'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
@@ -27,6 +29,8 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'mysql2'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -43,3 +47,54 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development, :test do
+  gem 'better_errors'
+  gem 'rr'
+  gem 'rspec'
+  gem 'fabrication'
+  gem 'rails-erd'
+  gem 'turnip'
+  gem 'i18n_generators'
+  gem 'awesome_print'
+  gem 'letter_opener'
+  gem 'rack-mini-profiler', group: :staging #パフォーマンス計測ツール
+  gem 'tapp-awesome_print'
+  gem 'wirble'
+  gem 'rspec-rails', '~> 2.6'
+  gem 'factory_girl_rails', '~> 1.2'
+  gem 'ffaker'
+  gem 'database_cleaner'
+  gem 'parallel_tests'
+  gem 'byebug'
+  gem 'poltergeist'
+end
+
+group :development do
+  gem 'erb2haml'
+  gem 'i18n_generators'
+  gem 'rails-erd'
+  gem 'capistrano', :require => nil #デプロイツール
+  gem 'capistrano-ext', :require => nil
+  gem 'capify-ec2', '~> 1.2.5', :require => nil
+  gem 'guard-rspec'
+  gem 'growl'
+  gem 'letter_opener'
+  gem 'launchy'
+  gem 'sextant'
+  gem 'rails_best_practices'
+  gem 'quiet_assets'
+  gem 'thin', require: false #軽量Rackサーバー
+  gem 'pry-remote'
+  gem 'pry-nav'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request', '0.2.5'
+  gem 'traceroute'
+  gem 'roo'
+  gem 'xray-rails'
+  gem 'bullet'
+  gem 'zeus', require: false
+  gem 'rubocop', require: false
+  gem 'nkss-rails', git: 'git://github.com/nadarei/nkss-rails'
+end
