@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :set_category
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create]
   load_and_authorize_resource
@@ -6,8 +7,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @q = Question.search(params[:q])
-    @questions = @q.result(distinct: true)
+    @questions = @category.questions
   end
 
   # GET /questions/1
@@ -66,6 +66,10 @@ class QuestionsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_category
+      @category = Category.find(params[:category_id])
+    end
+
     def set_question
       @question = Question.find(params[:id])
     end
