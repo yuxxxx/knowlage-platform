@@ -6,53 +6,43 @@
     .row
       %section.col-md-8.questions
         %h3 すべての質問
-        %article.panel.panel-default.closed
-          %header.panel-heading.question.leader
-            .panel-title
-              %img.pull-left.questioner{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}/
-              %h3.question.arrow-left 0は自然数に入りますか？
-          %footer.panel-body
-            %a.btn.btn-default.show-comments.btn-block{:href => "#"} 回答を見る
-        %article.panel.panel-default.opened
-          %header.panel-heading
-            .panel-title
-              %img.pull-left.questioner{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}/
-              %h3.question 効率的に公約数を求める方法はありますか？
-          .panel-body
-            %article{:cass => "row"}
-              %p.col-sm-9.arrow-right 今のところ見つかっていません。
-              %address.col-sm-3
-                %img.respondent{:src => "http://1.bp.blogspot.com/-AF0mWnoqFb8/UiyKmpN93sI/AAAAAAAAAh4/nDwgthh_ByA/s1600/a233b14646170b536eae9832a8611eadf7d25ca91376284595.jpg", :width => "100"}/
-                .respondent-name ひろゆき
-            %ul.action{:style => "list-style:none; padding:0;"}
-              %li
-                %a.btn.btn-default.pull-left{:href => "#"} シェアする
-              %li
-                %a.btn.btn-default{:href => "#"} わかった！
-          %article.well
-            %img.pull-left{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}/
-            %p.question.arrow-left 仮に解けてしまうとどうなるのですか？
-          .panel-body
-            %article.row
-              %p.col-sm-9.arrow-right 仮に解けてしまうと現代の暗号が容易に解読されてしまうことになるのでいろいろヤバいです。
-              %address.col-sm-3
-                %img.respondent{:src => "http://1.bp.blogspot.com/-AF0mWnoqFb8/UiyKmpN93sI/AAAAAAAAAh4/nDwgthh_ByA/s1600/a233b14646170b536eae9832a8611eadf7d25ca91376284595.jpg", :width => "100"}/
-                .respondent-name ひろゆき
-            %ul{:style => "list-style:none; padding:0;"}
-              %li
-                %a.btn.btn-default.pull-left{:href => "#"} シェアする
-              %li
-                %a.btn.btn-default{:href => "#"} わかった！
+        - @questions.each do |question|
+          %article.panel.panel-default.closed
+            %header.panel-heading.question.leader
+              .panel-title
+                %img.pull-left.questioner{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}/
+                .question
+                  %h3.question.arrow-left= question.title
+                  %p.question-description= question.description
+            .panel-body.comments
+              %section.comments{ data: { id: question.id } }
+                - question.comments.each do |comment|
+                  - if comment.user.role != 'ueser'
+                    - #raise
+                    %article.row
+                      %p.col-sm-9.arrow-right= comment.body
+                      %address.col-sm-3
+                        %img.respondent{:src => "http://1.bp.blogspot.com/-AF0mWnoqFb8/UiyKmpN93sI/AAAAAAAAAh4/nDwgthh_ByA/s1600/a233b14646170b536eae9832a8611eadf7d25ca91376284595.jpg", :width => "100"}/
+                        .respondent-name= comment.user.name
+                    %ul.action{:style => "list-style:none; padding:0;"}
+                      %li
+                        %a.btn.btn-default.pull-left{:href => "#"} シェアする
+                      %li
+                        %a.btn.btn-default{:href => "#"} わかった！
+                  - else
+                    %article.well
+                      %img.pull-left{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}
+                      %p.question.arrow-left= comment.body
+              %a.btn.btn-default.show-comments.btn-block.show-more{:href => "#", data: { id: question.id}} 回答を見る
+          - if current_user == question.user
             %form.form-group{:style => "display:block;"}
               %label お礼を書く・補足の質問を書く
               %textarea.form-control
               %input.btn.btn-primary{:type => "submit", :value => "投稿"}
-
+          - else
+            %p 新たに質問する
       %nav.col-md-4
         %h3 カテゴリー
         %ul
-          %li= link_to '代数', '#'
-          %li= link_to '幾何', '#'
-          %li= link_to '整数', '#'
-          %li= link_to '集合', '#'
-          %li= link_to '解析', '#'
+          - (@category.try(:categories).presence || []).each do |category|
+            %li= link_to cagegory.name, questions_path(category)
