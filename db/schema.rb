@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215053726) do
+ActiveRecord::Schema.define(version: 20131215071126) do
 
   create_table "categories", force: true do |t|
     t.integer  "parent_id"
@@ -44,6 +44,19 @@ ActiveRecord::Schema.define(version: 20131215053726) do
 
   add_index "questions", ["category_id"], name: "index_questions_on_category_id"
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
+
+  create_table "rails_admin_histories", force: true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      limit: 2
+    t.integer  "year",       limit: 5
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: ""
