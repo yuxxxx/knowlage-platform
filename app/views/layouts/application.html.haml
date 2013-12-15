@@ -36,10 +36,10 @@
       - Category.where(parent_id: nil).each do |category|
         %div
           %ul{style: "display-style:none; column-count:2; -webkit-column-count: 2;"}
-            %li= link_to category.name, questions_path(q: {catetory_id_cont: category.id})
+            %li= link_to category.name, category_questions_path(category)
             %ul
               - category.children.each do |child|
-                %li= link_to child.name, questions_path(q: {catetory_id_cont: child.id})
+                %li= link_to child.name, category_questions_path(child)
       %h4 メールマガジン登録
     / /.container
     %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}

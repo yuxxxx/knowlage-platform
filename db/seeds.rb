@@ -21,3 +21,29 @@ categories_1.each do |name|
     Category.create(name: name2, parent: category)
   end
 end
+
+user = User.where(email: 'question@email.com').first_or_create(password: Devise.friendly_token)
+
+math = Category.where(name: "数学").first
+q1 = user.questions.where(category: math,
+                      title: "0.99999999...=1なのですか？",
+                     ).first_or_create
+medicine = Category.where(name: "医学").first
+q2 = user.questions.where(category: medicine,
+                      title: "コラーゲンは本当に肌にいいのですか？",
+                     ).first_or_create
+info = Category.where(name: "情報工学").first
+q3 = user.questions.where(category: info,
+                      title: "コンピューターはなんで動くんですか？",
+                     ).first_or_create
+
+answer = User.where(email: 'answer@email.com').first_or_create(password: Devise.friendly_token)
+answer.comments.where(question: q1,
+                      body: "そうです。"
+                     ).first_or_create
+answer.comments.where(question: q2,
+                     body: "コラーゲンは確かに肌の…"
+                     ).first_or_create
+answer.comments.where(question: q3,
+                     body: "「コンピュータはなんで動くの？」という本があります…",
+                     ).first_or_create
