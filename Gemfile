@@ -3,9 +3,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -43,3 +40,17 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+group :development, :test do
+  gem 'factory_girl_rails'
+  gem 'pry-nav'
+  gem 'pry-rails'
+  gem 'quiet_assets'
+  gem 'rspec-rails'
+  gem 'sqlite3'
+end
+
+gem 'devise'
+gem 'haml-rails'
+gem 'omniauth-twitter'
+gem 'simple_form'
