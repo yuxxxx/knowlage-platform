@@ -1,26 +1,58 @@
-%h1 Listing questions
+.container
+  .starter-template
+    %header{:style => "height:70px; background-color:green;text-align:center;"}
+      %h1{:style => "color:white; display: inline-block; text--align: center; border-radius: 15px; background-color: transparent; -webkit-filter:blur 5px;"}
+        Mathematics
+    .row
+      %section.col-md-8.questions
+        %h3 すべての質問
+        %article.panel.panel-default.closed
+          %header.panel-heading.question.leader
+            .panel-title
+              %img.pull-left.questioner{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}/
+              %h3.question 0は自然数に入りますか？
+          %footer.panel-body
+            %a.btn.btn-default{:href => "#"} 回答を見る
+        %article.panel.panel-default.opened
+          %header.panel-heading
+            .panel-title
+              %img.pull-left.questioner{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}/
+              %h3.question 効率的に公約数を求める方法はありますか？
+          .panel-body
+            %article{:cass => "row"}
+              %p.col-sm-9 今のところ見つかっていません。
+              %address.col-sm-3
+                %img.respondent{:src => "http://1.bp.blogspot.com/-AF0mWnoqFb8/UiyKmpN93sI/AAAAAAAAAh4/nDwgthh_ByA/s1600/a233b14646170b536eae9832a8611eadf7d25ca91376284595.jpg", :width => "100"}/
+                .name ひろゆき
+            %ul.action{:style => "list-style:none; padding:0;"}
+              %li
+                %a.btn.btn-default.pull-left{:href => "#"} シェアする
+              %li
+                %a.btn.btn-default{:href => "#"} わかった！
+          %article.well
+            %img.pull-left{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}/
+            仮に解けてしまうとどうなるのですか？
+          .panel-body
+            %article.row
+              %p.col-sm-9 仮に解けてしまうと現代の暗号が容易に解読されてしまうことになるのでいろいろヤバいです。
+              %address.col-sm-3
+                %img.respondent{:src => "http://1.bp.blogspot.com/-AF0mWnoqFb8/UiyKmpN93sI/AAAAAAAAAh4/nDwgthh_ByA/s1600/a233b14646170b536eae9832a8611eadf7d25ca91376284595.jpg", :width => "100"}/
+                .name ひろゆき
+            %ul{:style => "list-style:none; padding:0;"}
+              %li
+                %a.btn.btn-default.pull-left{:href => "#"} シェアする
+              %li
+                %a.btn.btn-default{:href => "#"} わかった！
+            %form.form-group{:style => "display:block;"}
+              %label お礼を書く・補足の質問を書く
+              %textarea.form-control
+              %input.btn.btn-primary{:type => "submit", :value => "投稿"}
 
-%table
-  %tr
-    %th User
-    %th Category
-    %th Title
-    %th Description
-    %th
-    %th
-    %th
-
-  - @questions.each do |question|
-    %tr
-      %td= question.user.name
-      %td= question.category.name
-      %td= question.title
-      %td= question.description
-      %td= link_to 'Show', question
-      %td= link_to 'Edit', edit_question_path(question)
-      %td= link_to 'Destroy', question, :method => :delete, :data => { :confirm => 'Are you sure?' }
-
-%br
-
-- if can? :create, Question
-  = link_to 'New Question', new_question_path
+      %nav.col-md-4
+        %h3 カテゴリー
+        %ul
+          %li= link_to '代数', '#'
+          %li= link_to '幾何', '#'
+          %li= link_to '整数', '#'
+          %li= link_to '集合', '#'
+          %li= link_to '解析', '#'
