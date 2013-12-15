@@ -20,8 +20,13 @@
           %a.navbar-brand{href: "#"} Ask.Reserchers
         .collapse.navbar-collapse
           %ul.nav.navbar-nav.pull-right
-            %li
-              %a{href: "#about"} ログイン
+            %li.dropdown
+              %a.dropdown-toggle{href: "#", data: { toggle: "dropdown"} }
+                ログイン
+                %b.creat
+              %ul.dropdown-menu
+                %li= link_to "Facebookでログイン", user_omniauth_authorize_path(:facebook)
+                %li= link_to "Twitterでログイン", user_omniauth_authorize_path(:twitter)
             %li
               %a{href: "#contact"} 新規登録
         / /.nav-collapse

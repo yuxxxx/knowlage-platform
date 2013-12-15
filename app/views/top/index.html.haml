@@ -1,15 +1,41 @@
-%h1 Top Page
-
-- if user_signed_in?
-  .user
-    .provider= current_user.provider
-    .name= current_user.name
-
-  .logout_link
-    = link_to "Sign out", destroy_user_session_path, method: :delete
-- else
-  .login_links
-    = link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook)
-    = link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter)
-
-= link_to "Questions", questions_path
+.jumbotron
+  %h1
+    あなたの疑問に研究者が答えます！
+  .row
+    %img.col-md-3{:src => "http://1.bp.blogspot.com/-AF0mWnoqFb8/UiyKmpN93sI/AAAAAAAAAh4/nDwgthh_ByA/s1600/a233b14646170b536eae9832a8611eadf7d25ca91376284595.jpg"}/
+    %blockquote.well.col-md-9
+      %dl
+        %dt Q:インターネット掲示板について一言お願いします
+        %dd A:うそをうそであると見抜けない人でないと(掲示板を使うのは)難しい
+  .responder-name
+    情報工学 西村 博之
+  %a.btn.btn-primary{:href => "#"} ひろゆきに質問してみる
+.container
+  %nav
+    %a.btn.btn-default{:href => "#"} 詳しく知る
+    = link_to "Facebookでログイン", user_omniauth_authorize_path(:facebook), class: 'btn btn-default'
+    = link_to "Twitterでログイン", user_omniauth_authorize_path(:twitter), class: 'btn btn-default'
+  .starter-template
+    %h2 分野別の質問
+    .row
+      .col-md-4
+        %h3 数学
+        %dl
+          %dt Q:0.99999999...=1なのですか？
+          %dd
+            A:そうです。
+            %a.btn.btn-default.btn-sm{:href => "#"} 続きを見る
+      .col-md-4
+        %h3 医学
+        %dl
+          %dt Q:コラーゲンは本当に肌にいいのですか？
+          %dd
+            A:コラーゲンは確かに肌の…
+            %a.btn.btn-default.btn-sm{:href => "#"} 続きを見る
+      .col-md-4
+        %h3 情報工学
+        %dl
+          %dt Q:コンピューターはなんで動くんですか？
+          %dd
+            A:「コンピュータはなんで動くの？」という本があります…
+            %a.btn.btn-default{:href => "#"} 続きを見る
