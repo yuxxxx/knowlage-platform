@@ -49,6 +49,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'sqlite3'
   gem 'dotenv-rails'
+  gem 'shoulda-matchers'
 end
 
 gem 'devise'
