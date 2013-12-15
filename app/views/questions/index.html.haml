@@ -22,4 +22,5 @@
 
 %br
 
-= link_to 'New Question', new_question_path
+- if can? :create, Question
+  = link_to 'New Question', new_question_path

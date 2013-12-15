@@ -19,4 +19,8 @@ class User < ActiveRecord::Base
       .first_or_create(name: auth.info.nickname,
                        password: Devise.friendly_token)
   end
+
+  def answer?
+    role == "answer"
+  end
 end

@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :set_question, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:create]
+  load_and_authorize_resource
 
   # GET /questions
   # GET /questions.json
