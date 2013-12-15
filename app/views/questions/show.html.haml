@@ -25,9 +25,8 @@
             %img.pull-left{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}
             %p.question.arrow-left= comment.body
     %a.btn.btn-default.show-comments.btn-block.show-more{:href => "#", data: { id: @question.id } } 回答を見る
-  - if current_user == @question.user
-    = simple_form_for Comment.new do |f|
-      = f.input :question_id, as: :hidden, input_html: { value: @question.id }
-      = f.input :body
-      = f.button :submit
+  = simple_form_for Comment.new do |f|
+    = f.input :question_id, as: :hidden, input_html: { value: @question.id }
+    = f.input :body
+    = f.button :submit
 = link_to 'Back', category_questions_path(@category)
