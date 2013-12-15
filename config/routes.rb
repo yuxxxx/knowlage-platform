@@ -1,4 +1,6 @@
 KnowlagePlatform::Application.routes.draw do
+  resources :categories
+
   resources :comments
 
   resources :questions
