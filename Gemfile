@@ -42,6 +42,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'erd'
   gem 'erb2haml'
   gem 'better_errors'
   gem 'binding_of_caller'
