@@ -48,9 +48,11 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'dotenv-rails'
 end
 
 gem 'devise'
 gem 'haml-rails'
+gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 gem 'simple_form'
