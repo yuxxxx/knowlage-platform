@@ -36,7 +36,7 @@
       %div(style="column-width: 150px; -webkit-column-width: 150px;")
         - Category.where(parent_id: nil).each do |category|
           %ul{style: "display-style:none; "}
-            %li= link_to category.name, category_questions_path(q: {catetory_id_cont: category.id})
+            %li= link_to category.name, category_questions_path(category)
             %ul
               - category.children.each do |child|
                 %li= link_to child.name, category_questions_path(child)
