@@ -17,3 +17,7 @@ body {
 .starter-template {
   padding: 40px 15px;
 }
+footer div {
+  display: -moz-box;
+  display: -webkit-box;
+}

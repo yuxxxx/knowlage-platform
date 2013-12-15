@@ -33,15 +33,13 @@
     = yield
     %footer
       %h4 カテゴリー別リンク
-      %ul{style: "display-style:none; column-count:2; -webkit-column-count: 2;"}
-        %li
-          %a{href: "/category/math"} 数学
-          %ul
-            %li 代数
-            %li 幾何
-            %li 整数
-            %li 集合
-            %li 解析
+      - Category.where(parent_id: nil).each do |category|
+        %div
+          %ul{style: "display-style:none; column-count:2; -webkit-column-count: 2;"}
+            %li= link_to category.name, questions_path(q: {catetory_id_cont: category.id})
+            %ul
+              - category.children.each do |child|
+                %li= link_to child.name, questions_path(q: {catetory_id_cont: child.id})
       %h4 メールマガジン登録
     / /.container
     %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
