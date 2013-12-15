@@ -1,4 +1,6 @@
 KnowlagePlatform::Application.routes.draw do
+  resources :comments
+
   resources :questions
 
   devise_for :users
