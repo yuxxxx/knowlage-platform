@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, :omniauth_providers => [:facebook, :twitter]
+  has_many :comments
+  has_many :questions
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     User.where(provider: auth.provider, uid: auth.uid)
