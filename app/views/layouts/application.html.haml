@@ -1,0 +1,43 @@
+!!!
+%html{lang: "ja"}
+  %head
+    %meta{charset: "utf-8"}/
+    %meta{content: "width=device-width, initial-scale=1.0", name: "viewport"}/
+    %meta{content: "", name: "description"}/
+    %meta{content: "", name: "author"}/
+    %link{href: "../../assets/ico/favicon.png", rel: "shortcut icon"}/
+    %title あなたの疑問に研究者が答える Ask.Reserchers
+    %link{href: "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css", rel: "stylesheet"}/
+    %link{href: "css/screen-5c1b997e08.css", rel: "stylesheet"}/
+  %body
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", type: "button"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.navbar-brand{href: "#"} Ask.Reserchers
+        .collapse.navbar-collapse
+          %ul.nav.navbar-nav.pull-right
+            %li
+              %a{href: "#about"} ログイン
+            %li
+              %a{href: "#contact"} 新規登録
+        / /.nav-collapse
+    = yield
+    %footer
+      %h4 カテゴリー別リンク
+      %ul{style: "display-style:none; column-count:2; -webkit-column-count: 2;"}
+        %li
+          %a{href: "/category/math"} 数学
+          %ul
+            %li 代数
+            %li 幾何
+            %li 整数
+            %li 集合
+            %li 解析
+      %h4 メールマガジン登録
+    / /.container
+    %script{src: "https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"}
+    %script{src: "https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"}

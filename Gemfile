@@ -42,6 +42,7 @@ end
 # gem 'debugger', group: [:development, :test]
 
 group :development, :test do
+  gem 'erb2haml'
   gem 'better_errors'
   gem 'factory_girl_rails'
   gem 'pry-nav'
