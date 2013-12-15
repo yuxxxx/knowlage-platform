@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment.question, notice: 'Comment was successfully created.' }
+        format.html { redirect_to [@comment.question.category, @comment.question], notice: 'Comment was successfully created.' }
         format.json { render action: 'show', status: :created, location: @comment.question }
       else
         format.html { render action: 'new' }
