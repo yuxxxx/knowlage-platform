@@ -3,7 +3,9 @@ KnowlagePlatform::Application.routes.draw do
 
   resources :comments, only: [:create]
 
-  resources :questions, only: [:index, :show, :new, :create]
+  resources :categories do
+    resources :questions, only: [:index, :show, :new, :create]
+  end
 
   devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
 
