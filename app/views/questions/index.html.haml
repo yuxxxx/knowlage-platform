@@ -10,9 +10,9 @@
           %header.panel-heading.question.leader
             .panel-title
               %img.pull-left.questioner{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}/
-              %h3.question 0は自然数に入りますか？
+              %h3.question.arrow-left 0は自然数に入りますか？
           %footer.panel-body
-            %a.btn.btn-default{:href => "#"} 回答を見る
+            %a.btn.btn-default.show-comments.btn-block{:href => "#"} 回答を見る
         %article.panel.panel-default.opened
           %header.panel-heading
             .panel-title
@@ -20,10 +20,10 @@
               %h3.question 効率的に公約数を求める方法はありますか？
           .panel-body
             %article{:cass => "row"}
-              %p.col-sm-9 今のところ見つかっていません。
+              %p.col-sm-9.arrow-right 今のところ見つかっていません。
               %address.col-sm-3
                 %img.respondent{:src => "http://1.bp.blogspot.com/-AF0mWnoqFb8/UiyKmpN93sI/AAAAAAAAAh4/nDwgthh_ByA/s1600/a233b14646170b536eae9832a8611eadf7d25ca91376284595.jpg", :width => "100"}/
-                .name ひろゆき
+                .respondent-name ひろゆき
             %ul.action{:style => "list-style:none; padding:0;"}
               %li
                 %a.btn.btn-default.pull-left{:href => "#"} シェアする
@@ -31,13 +31,13 @@
                 %a.btn.btn-default{:href => "#"} わかった！
           %article.well
             %img.pull-left{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}/
-            仮に解けてしまうとどうなるのですか？
+            %p.question.arrow-left 仮に解けてしまうとどうなるのですか？
           .panel-body
             %article.row
-              %p.col-sm-9 仮に解けてしまうと現代の暗号が容易に解読されてしまうことになるのでいろいろヤバいです。
+              %p.col-sm-9.arrow-right 仮に解けてしまうと現代の暗号が容易に解読されてしまうことになるのでいろいろヤバいです。
               %address.col-sm-3
                 %img.respondent{:src => "http://1.bp.blogspot.com/-AF0mWnoqFb8/UiyKmpN93sI/AAAAAAAAAh4/nDwgthh_ByA/s1600/a233b14646170b536eae9832a8611eadf7d25ca91376284595.jpg", :width => "100"}/
-                .name ひろゆき
+                .respondent-name ひろゆき
             %ul{:style => "list-style:none; padding:0;"}
               %li
                 %a.btn.btn-default.pull-left{:href => "#"} シェアする
