@@ -5,7 +5,7 @@ KnowlagePlatform::Application.routes.draw do
 
   resources :questions
 
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   root 'top#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
