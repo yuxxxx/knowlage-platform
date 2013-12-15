@@ -12,8 +12,8 @@
 
   - @questions.each do |question|
     %tr
-      %td= question.user
-      %td= question.category
+      %td= question.user.name
+      %td= question.category.name
       %td= question.title
       %td= question.description
       %td= link_to 'Show', question

@@ -2,16 +2,25 @@
 
 %p
   %b User:
-  = @question.user
+  = @question.user.name
 %p
   %b Category:
-  = @question.category
+  = @question.category.name
 %p
   %b Title:
   = @question.title
 %p
   %b Description:
   = @question.description
+
+- @question.comments.each do |comment|
+  %p= comment.user.name
+  %p= comment.body
+
+= simple_form_for Comment.new do |f|
+  = f.input :question_id, as: :hidden, input_html: { value: @question.id }
+  = f.input :body
+  = f.button :submit
 
 = link_to 'Edit', edit_question_path(@question)
 \|
