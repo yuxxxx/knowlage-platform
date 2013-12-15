@@ -18,24 +18,5 @@
   .starter-template
     %h2 分野別の質問
     .row
-      .col-md-4
-        %h3 数学
-        %dl
-          %dt Q:0.99999999...=1なのですか？
-          %dd
-            A:そうです。
-            %a.btn.btn-default.btn-sm{:href => "#"} 続きを見る
-      .col-md-4
-        %h3 医学
-        %dl
-          %dt Q:コラーゲンは本当に肌にいいのですか？
-          %dd
-            A:コラーゲンは確かに肌の…
-            %a.btn.btn-default.btn-sm{:href => "#"} 続きを見る
-      .col-md-4
-        %h3 情報工学
-        %dl
-          %dt Q:コンピューターはなんで動くんですか？
-          %dd
-            A:「コンピュータはなんで動くの？」という本があります…
-            %a.btn.btn-default{:href => "#"} 続きを見る
+      - Question.recent.limit(3).each do |q|
+        = render 'question', question: q
