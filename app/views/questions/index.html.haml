@@ -17,7 +17,7 @@
             .panel-body.comments
               %section.comments{ data: { id: question.id } }
                 - question.comments.each do |comment|
-                  - if comment.user.role != 'ueser'
+                  - unless can? :manage, comment.user
                     - #raise
                     %article.row
                       %p.col-sm-9.arrow-right= comment.body
@@ -33,7 +33,7 @@
                     %article.well
                       %img.pull-left{:src => "https://s3.amazonaws.com/jetstrap-site/images/website/index/what_icon.png", :width => "40"}
                       %p.question.arrow-left= comment.body
-              %a.btn.btn-default.show-comments.btn-block.show-more{:href => "#", data: { id: question.id}} 回答を見る
+              %a.btn.btn-default.show-comments.btn-block.show-more{:href => "#", data: { id: question.id } } 回答を見る
           - if current_user == question.user
             %form.form-group{:style => "display:block;"}
               %label お礼を書く・補足の質問を書く
