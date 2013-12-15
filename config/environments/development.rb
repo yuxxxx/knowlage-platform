@@ -29,4 +29,13 @@ KnowlagePlatform::Application.configure do
 
   # for devise
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # for generators
+  config.generators do |g|
+    g.test_framework :rspec,
+      helper_specs: false,
+      view_specs: false,
+      routing_specs: false,
+      request_specs: false
+  end
 end

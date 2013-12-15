@@ -11,7 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131215030823) do
+ActiveRecord::Schema.define(version: 20131215032542) do
+
+  create_table "categories", force: true do |t|
+    t.integer  "parent_id"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["parent_id"], name: "index_categories_on_parent_id"
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "question_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "comments", ["question_id"], name: "index_comments_on_question_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "questions", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "questions", ["category_id"], name: "index_questions_on_category_id"
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
