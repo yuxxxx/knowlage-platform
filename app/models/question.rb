@@ -4,4 +4,6 @@ class Question < ActiveRecord::Base
   has_many :comments
   validates :user, presence: true
   validates :category, presence: true
+
+  scope :recent, order('updated_at DESC')
 end

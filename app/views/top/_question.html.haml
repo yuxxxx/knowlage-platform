@@ -1,0 +1,6 @@
+.col-md-4
+  %h3= question.category.name
+  %dl
+    %dt= "Q:#{question.title}"
+    %dd= "A:#{question.comments.first.body}"
+    = link_to "続きを見る", [question.category, question], class: "btn btn-default btn-sm"
